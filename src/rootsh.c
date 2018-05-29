@@ -592,7 +592,7 @@ void logSession(const int childPid) {
           dologging(msgbuf, msglen);
           exit(EXIT_FAILURE);
         }
-        if (write(masterPty, buf, n) != n) {
+        if (n > 0 && write(masterPty, buf, n) != n) {
           char msgbuf[BUFSIZ];
           int msglen;
           char *error = strerror(errno);
